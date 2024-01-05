@@ -13,7 +13,7 @@ export const getAllEntry = async (
 
     return data;
   } catch (error) {
-    console.error("There was an error!", error);
+    return [];
   }
 };
 

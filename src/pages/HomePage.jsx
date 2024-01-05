@@ -1,7 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const HomePage = () => {
+
+ const [admin, setAdmin] =  useState();
+
   const selectRef = useRef(null);
   const checkboxRef = useRef(null);
   const inputRef = useRef(null);
@@ -14,8 +17,22 @@ export const HomePage = () => {
   }
 
   return (
-    <div>
-      <h2>HomePage</h2>
+    <div className="w-screen h-screen flex justify-center items-center">
+
+      <div className="pb-24">
+            <Link to={"/admin"} className="bg-white block text-black my-2 py-4 px-20 rounded-lg text-center"> Admin </Link>
+            <Link to={"/instructor"} className="bg-white block text-black my-2 py-4 px-20 rounded-lg text-center"> Instructor </Link>
+      </div>
+    
+    </div>
+  );
+};
+
+
+
+/* 
+
+  <h2>HomePage</h2>
       <Link to={"/details"}>Go To Details Page</Link>
 
       <form onSubmit={handleSubmit}>
@@ -37,6 +54,5 @@ export const HomePage = () => {
         </label>
         <button type="submit">Submit</button>
       </form>
-    </div>
-  );
-};
+
+*/
