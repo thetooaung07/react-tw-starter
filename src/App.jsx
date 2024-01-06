@@ -6,13 +6,7 @@ import { AdminPage } from "./pages/AdminPage";
 import { DetailsPage } from "./pages/DetailsPage";
 import { HomePage } from "./pages/HomePage";
 import { InstructorPage } from "./pages/InstructorPage";
-import {
-  createNewEntry,
-  deleteEntry,
-  getAllEntry,
-  getEntryById,
-  updateExistingEntry,
-} from "./service";
+
 
 function App() {
   const [data, setData] = useState([]);
@@ -43,24 +37,3 @@ function App() {
 }
 
 export default App;
-
-/* 
-
-
- <div className="pt-4 w-screen mx-auto flex justify-center items-center">
-      {data && (
-        <div className="grid grid-cols-3 gap-4">
-          {data.map((el, index) => {
-            return (
-              <PokemonCard
-                key={index}
-                name={el.name}
-                types={el.type}
-                hp={el.hp}
-              />
-            );
-          })}
-        </div>
-      )}
-    </div>
-*/

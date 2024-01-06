@@ -1,8 +1,10 @@
+export const baseUrl = "http://localhost:8080";
+
 export const getAllEntry = async (
-  url = "https://jsonplaceholder.typicode.com/users"
+  url
 ) => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(baseUrl + url);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -18,7 +20,7 @@ export const getAllEntry = async (
 };
 
 export const getEntryById = async (
-  url = "https://jsonplaceholder.typicode.com/users/",
+  url,
   entryId = 2
 ) => {
   try {
@@ -38,14 +40,11 @@ export const getEntryById = async (
 };
 
 export const createNewEntry = async (
-  url = "https://jsonplaceholder.typicode.com/users",
-  jsObject = {
-    username: "Elon Musk",
-    email: "elonmusk@gmail.com",
-  }
+  url,
+  jsObject
 ) => {
   try {
-    const response = await fetch(url, {
+    const response = await fetch(baseUrl + url, {
       headers: { "Content-Type": "application/json; charset=utf-8" },
       method: "POST",
       body: JSON.stringify(jsObject),
@@ -65,15 +64,12 @@ export const createNewEntry = async (
 };
 
 export const updateExistingEntry = async (
-  url = "https://jsonplaceholder.typicode.com/users/",
-  entryId = 3,
-  jsObject = {
-    username: "Elon Musk Updated",
-    email: "elonmusk@gmail.com",
-  }
+  url,
+  entryId,
+  jsObject
 ) => {
   try {
-    const response = await fetch(`${url}${entryId}`, {
+    const response = await fetch(baseUrl + url + entryId, {
       headers: { "Content-Type": "application/json; charset=utf-8" },
       method: "PUT",
       body: JSON.stringify(jsObject),
@@ -93,23 +89,17 @@ export const updateExistingEntry = async (
 };
 
 export const deleteEntry = async (
-  url = "https://jsonplaceholder.typicode.com/users/",
-  entryId = 1
+  url,
+  entryId
 ) => {
-
   try {
-    const response = await fetch(`${url}${entryId}`, {
+    const response = await fetch(baseUrl + url + entryId, {
       method: "DELETE",
     });
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
-    const data = await response.json();
-    console.log("Delete - ", data);
-
-    return data;
   } catch (error) {
     console.error("There was an error!", error);
   }
