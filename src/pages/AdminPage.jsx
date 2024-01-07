@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StudentTabView } from "../components/StudentTabView";
 import { InstructorPage } from "./InstructorPage";
 import { InstructorTabView } from "../components/InstructorTabView";
+import { CoursetTabView } from "../components/CourseTabView";
 
 export const AdminPage = () => {
   const [openTab, setOpenTab] = useState(1);
@@ -46,7 +47,7 @@ export const AdminPage = () => {
         )}
 
         {openTab === 3 && (
-          <StudentTabView></StudentTabView>
+          <CoursetTabView></CoursetTabView>
         )}
       </div>
     </div>

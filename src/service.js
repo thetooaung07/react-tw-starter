@@ -21,10 +21,10 @@ export const getAllEntry = async (
 
 export const getEntryById = async (
   url,
-  entryId = 2
+  entryId
 ) => {
   try {
-    const response = await fetch(`${url}${entryId}`);
+    const response = await fetch(baseUrl + url + entryId);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

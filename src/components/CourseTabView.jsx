@@ -1,34 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { createNewEntry, deleteEntry, getAllEntry, updateExistingEntry } from "../service";
-import { StudentCard } from "./StudentCard";
+import { CourseCard } from "./CourseCard";
 
-export const StudentTabView = () => {
+export const CoursetTabView = () => {
   const [data, setData] = useState([]);
   const [editMode, setEditMode] = useState(false);
-  const [name, setName] = useState("");
-  const [dob, setDob] = useState("");
-  const [contactInfo, setContactInfo] = useState("");
-  const [gpa, setGpa] = useState("");
+  const [courseName, setCourseName] = useState("");
+  const [credit, setCredit] = useState("");
+  const [capacity, setCapacity] = useState("");
+  const [department, setDepartment] = useState("");
 
   useEffect(() => {
-    getAllEntry("/student").then((res) => setData(res));
+    getAllEntry("/course").then((res) => setData(res));
   }, []);
 
 
   const handleCreate = () => {
 
-    if (name != "" && dob != "" && contactInfo != "") {
-      createNewEntry("/student", {
-        studentName: name,
-        dateOfBirth: dob,
-        contactInfo: contactInfo,
-        gpa: gpa
+    if (courseName != "" && credit != "" && capacity != "") {
+      createNewEntry("/course", {
+        courseName: courseName,
+        credits: credit,
+        capacity: capacity,
+        department: department
       }).then((res) => {
         setEditMode(false);
-        setName("");
-        setContactInfo("");
-        setDob("");
-        setGpa("");
+        setCourseName("");
+        setCapacity("");
+        setCredit("");
+        setDepartment("");
         setData((prevData) => [...prevData, res]);
       }
       )
@@ -38,7 +38,7 @@ export const StudentTabView = () => {
   }
 
   const handleDelete = (id) => {
-    deleteEntry("/student/", id).then(() => {
+    deleteEntry("/course/", id).then(() => {
       setData(prevData => prevData.filter(item => item.id !== id));
     });
   };
@@ -53,13 +53,13 @@ export const StudentTabView = () => {
             {data.map((el, index) => {
 
               return (
-                <StudentCard
+                <CourseCard
                   key={index}
-                  id={el.id}
-                  studentName={el.studentName}
-                  studentDob={el.dateOfBirth}
-                  studentContactInfo={el.contactInfo}
-                  studentGpa={el.gpa}
+                  id={el.courseID}
+                  courseName={el.courseName}
+                  courseCapacity={el.capacity}
+                  courseCredit={el.credits}
+                  courseDepartment={el.department}
                   handleDelete={handleDelete}
                 />
               );
@@ -78,47 +78,47 @@ export const StudentTabView = () => {
                   className="w-full px-6 pt-4 flex items-start flex-col z-10"
                 >
                   <input
-                    placeholder="Enter Name"
+                    placeholder="Enter Course Name"
                     className="w-full p-1 disabled:bg-transparent"
                     autoFocus
                     type="text"
-                    value={name}
+                    value={courseName}
                     onChange={(e) => {
-                      e.stopPropagation(); setName(e.target.value);
+                      e.stopPropagation(); setCourseName(e.target.value);
                     }}
                   />
 
                   <div className="h-1 mb-1"></div>
 
                   <input
-                    placeholder={"DOB: YYYY-MM-DD"}
-                    className="w-full p-1 disabled:bg-transparent"
-                    type="text"
-                    value={dob}
-                    onChange={(e) => {
-                      setDob(e.target.value);
-                    }}
-                  />
-
-                  <div className="h-1 mb-1"></div>
-
-                  <input
-                    placeholder="Enter Contact Info"
-                    className="w-full p-1 disabled:bg-transparent"
-                    type="text"
-                    value={contactInfo}
-                    onChange={(e) => {
-                      setContactInfo(e.target.value);
-                    }}
-                  />
-                  <div className="h-1 mb-1"></div>
-                  <input
-                    placeholder="Enter GPA"
+                    placeholder={"Enter Capacity"}
                     className="w-full p-1 disabled:bg-transparent"
                     type="number"
-                    value={gpa}
+                    value={capacity}
                     onChange={(e) => {
-                      setGpa(e.target.value);
+                      setCapacity(e.target.value);
+                    }}
+                  />
+
+                  <div className="h-1 mb-1"></div>
+
+                  <input
+                    placeholder="Enter Credits"
+                    className="w-full p-1 disabled:bg-transparent"
+                    type="number"
+                    value={credit}
+                    onChange={(e) => {
+                      setCredit(e.target.value);
+                    }}
+                  />
+                  <div className="h-1 mb-1"></div>
+                  <input
+                    placeholder="Enter Department"
+                    className="w-full p-1 disabled:bg-transparent"
+                    type="text"
+                    value={department}
+                    onChange={(e) => {
+                      setDepartment(e.target.value);
                     }}
                   />
                 </form>
