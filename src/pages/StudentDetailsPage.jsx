@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getEntryById } from "../service";
 
-export const DetailsPage = () => {
+export const StudentDetailsPage = () => {
   const [data, setData] = useState();
   const params = useParams();
 
@@ -24,7 +24,7 @@ export const DetailsPage = () => {
             data.attends.map((el, index) => (
               <div key={index}>
                 <div>
-                  {el.courseName}({el.department})
+                  {el.courseName} ( Dep - {el.department} )
                 </div>
               </div>
             ))}

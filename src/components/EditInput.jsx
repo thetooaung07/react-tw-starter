@@ -1,5 +1,4 @@
-import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 
 export const EditInput = ({
   editMode,
@@ -17,7 +16,7 @@ export const EditInput = ({
       }}
     >
       <input
-        className="w-full disabled:bg-transparent -z-10"
+        className="w-full disabled:bg-transparent pl-1"
         placeholder={placeholder}
         type={isNumber ? "number" : "text"}
         disabled={!editMode}

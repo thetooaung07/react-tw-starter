@@ -56,7 +56,8 @@ export const CourseCard = ({
             ></EditInput>
           </div>
         </div>
-
+        <div className="flex justify-between items-center">
+          <div className="text-sm min-w-20">credit&nbsp;-&nbsp;</div>
         <EditInput
           placeholder={"Enter credit"}
           editMode={editMode}
@@ -65,18 +66,25 @@ export const CourseCard = ({
           name={credit}
           setName={setCredit}
         ></EditInput>
+        </div>
 
         <div className="h-1 my-1"></div>
-        <EditInput
-          placeholder={"Enter Capacity"}
-          editMode={editMode}
-          isNumber={true}
-          handleUpdate={handleUpdate}
-          name={capacity}
-          setName={setCapacity}
-        ></EditInput>
+        <div className="flex justify-between items-center">
+          <div className="text-sm min-w-20">capacity&nbsp;-&nbsp;</div>
+          <EditInput
+            placeholder={"Enter Capacity"}
+            editMode={editMode}
+            isNumber={true}
+            handleUpdate={handleUpdate}
+            name={capacity}
+            setName={setCapacity}
+          ></EditInput>
+        </div>
 
         <div className="h-1 my-1"></div>
+
+        <div className="flex justify-between items-center">
+          <div className="text-sm min-w-20">dep&nbsp;-&nbsp;</div>
         <EditInput
           placeholder={"Enter Department"}
           editMode={editMode}
@@ -84,6 +92,7 @@ export const CourseCard = ({
           name={department}
           setName={setDepartment}
         ></EditInput>
+        </div>
       </div>
 
       <div className="absolute bottom-0 right-0 flex items-center">
